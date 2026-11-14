@@ -1,0 +1,340 @@
+{
+  "name": "zovo-heic-viewer",
+  "displayName": "HEIC Viewer & AVIF Viewer",
+  "description": "HEIC viewer for VS Code that also opens HEIF and AVIF photos: zoom, pan, every image of burst and multi-image files, bit depth, EXIF camera data and the GPS position as plain numbers. Offline, nothing to install.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1E2A33",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/heic-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/heic-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/heic-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "heic",
+    "heif",
+    "avif",
+    "image viewer",
+    "iphone photos"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "heicViewer.editor",
+        "displayName": "HEIC Viewer (HEIC, HEIF)",
+        "selector": [
+          {
+            "filenamePattern": "*.heic"
+          },
+          {
+            "filenamePattern": "*.heif"
+          },
+          {
+            "filenamePattern": "*.hif"
+          }
+        ],
+        "priority": "default"
+      },
+      {
+        "viewType": "heicViewer.avif",
+        "displayName": "HEIC Viewer (AVIF with EXIF)",
+        "selector": [
+          {
+            "filenamePattern": "*.avif"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "commands": [
+      {
+        "command": "heicViewer.openWithViewer",
+        "title": "Open in HEIC Viewer",
+        "category": "HEIC Viewer",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "heicViewer.openSample",
+        "title": "Open the Sample HEIC Photo",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.openAvifSample",
+        "title": "Open the Sample AVIF Photo",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.openWalkthrough",
+        "title": "Get Started",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.supportDeveloper",
+        "title": "Support the developer",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.convert",
+        "title": "Convert to JPEG, PNG or WebP (Pro)",
+        "category": "HEIC Viewer",
+        "icon": "$(export)"
+      },
+      {
+        "command": "heicViewer.sheet",
+        "title": "Contact Sheet of a Folder (Pro)",
+        "category": "HEIC Viewer"
+      },
+      {
+        "command": "heicViewer.privacy",
+        "title": "Privacy Check: GPS and Serial Numbers (Pro)",
+        "category": "HEIC Viewer",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "heicViewer.zovoPro.convert",
+        "title": "Zovo Pro: Convert to JPEG, PNG or WebP"
+      },
+      {
+        "command": "heicViewer.zovoPro.sheet",
+        "title": "Zovo Pro: Contact sheet"
+      },
+      {
+        "command": "heicViewer.zovoPro.privacy",
+        "title": "Zovo Pro: Privacy check"
+      },
+      {
+        "command": "heicViewer.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all 22 Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "heicViewer.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "heicViewer.convert",
+          "when": "activeCustomEditorId == 'heicViewer.editor' && config.heicViewer.showProTools",
+          "group": "1_heic@1"
+        },
+        {
+          "command": "heicViewer.convert",
+          "when": "activeCustomEditorId == 'heicViewer.avif' && config.heicViewer.showProTools",
+          "group": "1_heic@1"
+        },
+        {
+          "command": "heicViewer.privacy",
+          "when": "activeCustomEditorId == 'heicViewer.editor' && config.heicViewer.showProTools",
+          "group": "1_heic@2"
+        },
+        {
+          "command": "heicViewer.privacy",
+          "when": "activeCustomEditorId == 'heicViewer.avif' && config.heicViewer.showProTools",
+          "group": "1_heic@2"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "heicViewer.openWithViewer",
+          "when": "resourceExtname =~ /^\\.(heic|heif|hif|avif)$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "heicViewer.zovoPro.convert",
+          "when": "resourceExtname =~ /^\\.(heic|heif|hif|avif)$/i && !explorerResourceIsFolder && config.heicViewer.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "heicViewer.zovoPro.privacy",
+          "when": "resourceExtname =~ /^\\.(heic|heif|hif|avif|jpe?g)$/i && !explorerResourceIsFolder && config.heicViewer.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "heicViewer.zovoPro.convert",
+          "when": "explorerResourceIsFolder && config.heicViewer.showProTools",
+          "group": "zovoPro@3"
+        },
+        {
+          "command": "heicViewer.zovoPro.sheet",
+          "when": "explorerResourceIsFolder && config.heicViewer.showProTools",
+          "group": "zovoPro@4"
+        },
+        {
+          "command": "heicViewer.zovoPro.privacy",
+          "when": "explorerResourceIsFolder && config.heicViewer.showProTools",
+          "group": "zovoPro@5"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "heicViewer.convert",
+          "when": "config.heicViewer.showProTools"
+        },
+        {
+          "command": "heicViewer.sheet",
+          "when": "config.heicViewer.showProTools"
+        },
+        {
+          "command": "heicViewer.privacy",
+          "when": "config.heicViewer.showProTools"
+        },
+        {
+          "command": "heicViewer.zovoPro.convert",
+          "when": "false"
+        },
+        {
+          "command": "heicViewer.zovoPro.sheet",
+          "when": "false"
+        },
+        {
+          "command": "heicViewer.zovoPro.privacy",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "HEIC Viewer",
+      "properties": {
+        "heicViewer.maxFileSizeMB": {
+          "type": "number",
+          "default": 300,
+          "minimum": 1,
+          "description": "Files larger than this open with a message instead of the image, so VS Code stays responsive."
+        },
+        "heicViewer.quality": {
+          "type": "number",
+          "default": 90,
+          "minimum": 10,
+          "maximum": 100,
+          "description": "JPEG and WebP quality (10 to 100) used by the Pro converter."
+        },
+        "heicViewer.sheetColumns": {
+          "type": "number",
+          "default": 4,
+          "minimum": 2,
+          "maximum": 8,
+          "description": "Photos per row on a contact sheet page (Pro)."
+        },
+        "heicViewer.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (convert, contact sheet, privacy check) in the Command Palette, the Explorer menu and the viewer toolbar. Everything free stays visible."
+        },
+        "heicViewer.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a Marketplace rating after images opened without an error on two occasions at least 30 minutes apart. \"Later\" asks one more time after 7 days, \"No thanks\" never asks again. Nothing is sent anywhere."
+        },
+        "heicViewer.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "heicViewer.start",
+        "title": "Get started with the HEIC Viewer",
+        "description": "Open HEIC, HEIF and AVIF photos in VS Code.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a HEIC photo",
+            "description": "Click any .heic, .heif or .avif file. It opens as an image with its size, bit depth and camera data next to it.\n[Open the sample HEIC photo](command:heicViewer.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A HEIC photo of a wind farm open in VS Code with the EXIF and GPS panel."
+            },
+            "completionEvents": [
+              "onCommand:heicViewer.openSample"
+            ]
+          },
+          {
+            "id": "inspect",
+            "title": "Read the EXIF and the GPS numbers",
+            "description": "The panel on the right lists camera, lens, exposure and date, and the GPS position as numbers. No map is loaded. Bursts and multi-image files get an Image picker; the arrow keys step through it.\n[Open the sample AVIF photo](command:heicViewer.openAvifSample)",
+            "media": {
+              "markdown": "walkthrough/inspect.md"
+            },
+            "completionEvents": [
+              "onCommand:heicViewer.openAvifSample"
+            ]
+          },
+          {
+            "id": "zovo-related",
+            "title": "Tools that often go with photos",
+            "description": "If your project also has TIFF, SVG or other images, these free Zovo extensions open them. A link opens the extension page, and you choose there whether to install it.\n[Image Editor](command:extension.open?%5B%22zovo.zovo-image-editor%22%5D)\n[TIFF Viewer](command:extension.open?%5B%22zovo.tiff-viewer%22%5D)",
+            "media": {
+              "markdown": "walkthrough/related.md"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "devDependencies": {},
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}

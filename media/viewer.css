@@ -1,0 +1,47 @@
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; padding: 0; }
+body { display: flex; flex-direction: column; color: var(--vscode-foreground); background: var(--vscode-editor-background); font-family: var(--vscode-font-family); font-size: var(--vscode-font-size); overflow: hidden; }
+#toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 4px 8px; border-bottom: 1px solid var(--vscode-panel-border, transparent); background: var(--vscode-editorWidget-background, transparent); }
+.chip { font-weight: 600; margin-right: 4px; white-space: nowrap; }
+.sel, .chk { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+select { background: var(--vscode-dropdown-background); color: var(--vscode-dropdown-foreground); border: 1px solid var(--vscode-dropdown-border, transparent); padding: 1px 2px; font: inherit; }
+.grp { display: inline-flex; gap: 2px; }
+.tb { background: var(--vscode-button-secondaryBackground, transparent); color: var(--vscode-button-secondaryForeground, inherit); border: 1px solid var(--vscode-button-border, var(--vscode-panel-border, transparent)); padding: 1px 7px; cursor: pointer; font: inherit; border-radius: 2px; min-width: 24px; }
+.tb:hover { background: var(--vscode-button-secondaryHoverBackground, var(--vscode-toolbar-hoverBackground)); }
+.tb[aria-pressed="true"] { outline: 1px solid var(--vscode-focusBorder); }
+#err { padding: 6px 10px; background: var(--vscode-inputValidation-warningBackground, #5a4a00); border-bottom: 1px solid var(--vscode-inputValidation-warningBorder, transparent); }
+#main { flex: 1; display: flex; min-height: 0; }
+#stageWrap { flex: 1; position: relative; min-width: 0; }
+#stage { position: absolute; inset: 0; overflow: auto; outline: none; cursor: crosshair; }
+#stage.drag { cursor: grabbing; }
+#pad { display: grid; place-items: center; min-width: 100%; min-height: 100%; box-sizing: border-box; padding: 12px; width: max-content; height: max-content; }
+#img { display: block; image-rendering: pixelated; box-shadow: 0 0 0 1px var(--vscode-panel-border, rgba(128,128,128,.4)); }
+#grid-layer { position: absolute; left: 0; top: 0; pointer-events: none; }
+.bg-checker { background-color: #fff; background-image: linear-gradient(45deg, #c8c8c8 25%, transparent 25%, transparent 75%, #c8c8c8 75%), linear-gradient(45deg, #c8c8c8 25%, transparent 25%, transparent 75%, #c8c8c8 75%); background-size: 16px 16px; background-position: 0 0, 8px 8px; }
+.bg-black { background: #000; }
+.bg-gray { background: #808080; }
+.bg-white { background: #fff; }
+#info { width: 290px; flex: none; overflow: auto; border-left: 1px solid var(--vscode-panel-border, transparent); padding: 6px 10px; box-sizing: border-box; font-size: 12px; }
+#info[hidden] { display: none; }
+#info h3 { font-size: 12px; margin: 10px 0 4px; word-break: break-all; }
+#info table { border-collapse: collapse; width: 100%; }
+#info th { text-align: left; font-weight: normal; color: var(--vscode-descriptionForeground); padding: 1px 8px 1px 0; vertical-align: top; white-space: nowrap; }
+#info td { padding: 1px 0; word-break: break-word; }
+#info .lv th, #info .lv td { padding-right: 8px; }
+#info tr.cur td { font-weight: 600; }
+#info ul { margin: 0; padding-left: 16px; }
+#status { display: flex; gap: 16px; padding: 2px 8px; font-family: var(--vscode-editor-font-family, monospace); font-size: 12px; border-top: 1px solid var(--vscode-panel-border, transparent); min-height: 18px; white-space: pre; }
+#zoomPct { margin-left: auto; }
+.sw { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--vscode-panel-border, #888); background: var(--c); }
+#footer { padding: 2px 8px; }
+@media (max-width: 760px) { #info { width: 210px; } }
+@media (max-width: 560px) { #info { display: none; } }
+#busy { padding: 6px 10px; color: var(--vscode-descriptionForeground); }
+#info h3.name { font-size: 13px; }
+#info .muted { color: var(--vscode-descriptionForeground); margin: 4px 0; }
+#info ul.priv li { color: var(--vscode-editorWarning-foreground, #cca700); }
+#info details { margin-top: 10px; }
+#info details summary { cursor: pointer; font-weight: 600; }
+#info table.tags th { white-space: nowrap; }
+#info table.tags td { padding-right: 6px; word-break: break-word; }
+#img { image-rendering: auto; }
